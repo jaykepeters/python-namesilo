@@ -157,6 +157,17 @@ class NameSilo:
         self._process_data(url_extend)
         return True
 
+    def dnssec_add_record(self, domain, digest, keyTag, digestType, alg):
+        """
+        Add DS record for specified domain
+        """
+        url_extend = f"dnsSecAddRecord?version=1&" \
+                     f"type=xml&key={self._token}&domain={domain}&" \
+                     f"&digest={digest}&keyTag={keyTag}&digestType={digestType}&alg={alg}"
+        
+        self._process_data(url_extend)
+        return True
+
     def list_domains(self):
         """
         List all domains registered with current account
